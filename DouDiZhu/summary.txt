@@ -1,0 +1,50 @@
+
+     主要内容：
+       本书详细地讲解了，斗地主的面向对象实现，主要功能包括：
+     1、洗牌和发牌
+     2、判断牌的类型（单、对子、三不带等）
+     3、斗地主的游戏规则，手中的所有牌中是否存在可以管住上家的牌、我选中的牌是否可以管住上家的牌
+     
+     主要用来学习面向对象程序设计和算法练习，提高分析、设计、编程能力。
+     
+     单机版
+     
+     主要类：
+     
+     1.Card、CardUtil、CardComparator（斗地主的核心定义）
+     2.OneMatch（洗牌和发牌）
+     3.GameRule（游戏规则）
+     4.DdzGUI（前端界面和业务逻辑）
+     5.
+     
+     ---------------左边的是右边的基础-----
+     Card-->GameRule.getCardType-->GameRule.isOvercomePrev-->界面业务逻辑
+     
+     项目的依赖关系：
+     -------------------------------------------------------------------
+     Card：（主要功能的实现由下面3个方法实现）
+     一张牌主要有4个属性，id（牌的id）、bigType（牌的大类型）、smallType（牌的小类型）、grade（牌的等级）、imageName（牌的图片名字）
+     
+     其中，bigType、smallType、grade、imageName 4个非主属性完全依赖于主属性id，
+     
+     依赖算法定义在CardUtil中。
+        关键算法
+        
+        CardUtil
+       1.public static CardBigType getBigType(int id);
+       2.public static CardSmallType getSmallType(int num);
+       3.public static int getGrade(int num) ;
+       ----------------------------------------------------------------------
+     GameRule.getCardType（依赖于Card的定义）
+            关键算法
+       1.public static CardType getCardType(List<Card> myCards);
+       2.public static boolean isDan(List<Card> myCards) ;
+       3.等等
+       -----------------------------------------------------------------
+     GameRule.isOvercomePrev（依赖Card和GameRule.getCardType的定义）
+     GameRule.isOvercomePrev（依赖Card和GameRule.getCardType的定义
+           关键算法
+     -------------------------------------------------------------
+        洗牌-发牌 算法（依赖Card的定义）
+        
+         由OneMatch实现
